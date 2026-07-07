@@ -74,3 +74,29 @@ document.querySelectorAll('.nav__links a[href^="#"]').forEach((link) => {
     if (target) target.scrollIntoView({ behavior: "smooth" });
   });
 });
+
+/* ── Games Count Loader ────────────────────────────── */
+async function loadGamesCount() {
+  let count = 26; // Default fallback count of directories in Games
+  try {
+    const response = await fetch('../Games/script.js');
+    if (response.ok) {
+      const scriptText = await response.text();
+      const matches = scriptText.match(/const\s+GAMES\s*=\s*\[([\s\S]*?)\];/);
+      if (matches && matches[1]) {
+        const idMatches = matches[1].match(/id\s*:\s*['"`]/g);
+        if (idMatches && idMatches.length > 0) {
+          count = idMatches.length;
+        }
+      }
+    }
+  } catch (error) {
+    console.warn("Could not dynamically load games count from script.js, using fallback:", error);
+  }
+
+  document.querySelectorAll('.games-count-val').forEach(el => {
+    el.textContent = count;
+  });
+}
+
+loadGamesCount();
