@@ -746,3 +746,47 @@ body {
 .project-card__accent--games {
   background: linear-gradient(90deg, transparent, #8B5CF6, #06B6D4, transparent) !important;
 }
+
+/* ── Clone Box ─────────────────────────────────────── */
+.clone-box {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+[data-theme="light"] .clone-box {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.clone-input {
+  background: transparent;
+  border: none;
+  color: var(--fg-muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 8px 12px;
+  flex: 1;
+  outline: none;
+  width: 100%;
+}
+
+.clone-btn {
+  background: transparent;
+  border: none;
+  border-left: 1px solid var(--border);
+  color: var(--fg-muted);
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, background 0.2s;
+}
+
+.clone-btn:hover {
+  color: var(--accent);
+  background: rgba(99, 102, 241, 0.1);
+}
